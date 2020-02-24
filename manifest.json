@@ -1,0 +1,13 @@
+{
+    "manifest_version": 2,
+    "name": "Facebook ID Get",
+    "version": "0.1",
+    "content_scripts": [
+      {
+        "matches": [
+          "https://www.facebook.com/*"
+        ],
+        "js": ["jquery-3.4.1.slim.min.js", "content.js"]
+      }
+    ]  
+}
