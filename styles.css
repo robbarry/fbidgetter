@@ -1,0 +1,36 @@
+#fbidgetter {
+	top: 0px;
+	bottom: auto;
+	left: auto;
+	right: 0px;
+	display: block;
+	z-index: 999998;
+	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.28);
+	background-color: #daa;
+	width: auto;
+	position: fixed;
+	padding: 14px 8px 13px 8px;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	margin:0px;	
+}
+
+
+#twidgetter {
+	top: 0px;
+	bottom: auto;
+	left: auto;
+	right: 0px;
+	display: block;
+	z-index: 999998;
+	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.28);
+	background-color: #daa;
+	width: auto;
+	position: fixed;
+	padding: 14px 8px 13px 8px;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	margin:0px;	
+}

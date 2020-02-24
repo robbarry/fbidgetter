@@ -1,49 +1,62 @@
-// content.js
+// see if facebook ID on page
+
+id_stack = [];
 
 var render = function(selector, type, id) {
-	console.log(type + ": " + id);
-	$(selector).ready(function() {
-		display(selector, type, id);
-		var exists = $("#fbidgetter").length;
-		console.log(exists);
-	})
+	display(selector, type, id);
 }
 
-var display = function(selector, type, id) {
+var display = function(id) {
+	type = "FBID"
 	new_el = "<div id='fbidgetter'></div>";	
-	if (type == "UID") $(selector).first().append(new_el);
-	if (type == "PID" || type == "EID") $(selector).after(new_el);
-	
-	$("#fbidgetter").css("background-color", "#ddd").css("color", "#600");
-	if (type == "UID") $("#fbidgetter").css("font-size", "50%").css("margin-left", "10px");
-	if (type == "PID") $("#fbidgetter").css("font-size", "75%");
-	if (type == "EID") $("#fbidgetter").css("font-size", "110%");
-	$("#fbidgetter").text(type + " " + id);	
+	id_text = type + " " + id;
+	if ($("#fbidgetter").length == 0) $("body").prepend(new_el);		
+	if ($("#fbidgetter").text() != id_text) {			
+		$("#fbidgetter").text(id_text);
+	}
 }
 
 var main = function() {
-	var text = document.documentElement.outerHTML;
-	var re = /"userID":"([0-9]*?)"/;
-	var matches = text.match(re);
-	if (matches != null) {	
-		render("h1 div", "UID", matches[1]);
-		return true;
-	}
+	setTimeout(main, 100);
 
-	re = /"pageID":"(.*?)"/;
-	matches = text.match(re);
-	if (matches != null) {
-		render("._64-f", "PID", matches[1]);
-		return true;
-	}
 
-	re = /"entity_id":"(.*?)"/;
-	matches = text.match(re);
-	render("._19sz", "EID", matches[1]);
-	return true;
+	regex = []
+	regex.push(["UID", /"userID":"([0-9]*?)"/]);
+	regex.push(["UID", /set=ecnf.([0-9]*?)"/]);
+	regex.push(["UID", /"User",id:"([0-9]*?)"/]);
+
+	regex.push(["PID", /"pageID":"(.*?)"/]);
+	regex.push(["PID", /Pagelet_([0-9]*?)"/]);
 	
+	regex.push(["EID", /"entity_id":"(.*?)"/]);
+
+	results = {}
+	for (i = 0; i < regex.length; i++) {
+		results[regex[i][0]] = ""
+	}	
+
+	var text = $("html").html();
+	for (i = 0; i < regex.length; i++) {
+		type = regex[i][0]
+		pattern = regex[i][1]
+		matches = text.match(pattern)
+		if (matches != null) {
+			hit = matches[1]
+			if (id_stack.includes(hit)) {
+				// we've already got this one
+			} else {
+				id_stack.push(hit)
+			}
+		}
+	}
+
+	display(id_stack[id_stack.length - 1]);
+	if (id_stack.length > 100) {
+		id_stack.pop();
+	}
+
 }
 
 $(document).ready(function() {
 	main();
-})
+});

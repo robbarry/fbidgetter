@@ -7,14 +7,16 @@
         "matches": [
           "https://www.facebook.com/*"
         ],
-        "js": ["jquery-3.4.1.slim.min.js", "facebook-content.js"]
+        "js": ["jquery-3.4.1.slim.min.js", "facebook-content.js"],
+        "css": ["styles.css"]
       },
       {
         "matches": [
           "https://www.twitter.com/*",
           "https://twitter.com/*"
         ],
-        "js": ["jquery-3.4.1.slim.min.js", "twitter-content.js"]
+        "js": ["jquery-3.4.1.slim.min.js", "twitter-content.js"],
+        "css": ["styles.css"]
       }      
     ]  
 }
