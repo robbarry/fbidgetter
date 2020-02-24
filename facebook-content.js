@@ -14,7 +14,7 @@ var display = function(selector, type, id) {
 	if (type == "UID") $(selector).first().append(new_el);
 	if (type == "PID" || type == "EID") $(selector).after(new_el);
 	
-	$("#fbidgetter").css("background-color", "#ddd").css("color", "#333")
+	$("#fbidgetter").css("background-color", "#ddd").css("color", "#600");
 	if (type == "UID") $("#fbidgetter").css("font-size", "50%").css("margin-left", "10px");
 	if (type == "PID") $("#fbidgetter").css("font-size", "75%");
 	if (type == "EID") $("#fbidgetter").css("font-size", "110%");
@@ -23,7 +23,7 @@ var display = function(selector, type, id) {
 
 var main = function() {
 	var text = document.documentElement.outerHTML;
-	var re = /"userID":"(.*?)"/;
+	var re = /"userID":"([0-9]*?)"/;
 	var matches = text.match(re);
 	if (matches != null) {	
 		render("h1 div", "UID", matches[1]);
