@@ -11,8 +11,18 @@ Alternatively, if you're comfortable with Git, you can simply clone the reposito
 
 ### Step 2: Unzip ZIP file
 
-Decompress the ZIP file.
+Extract the ZIP file into a folder.
 
 ### Step 3: Load Chrome's extension page
 
-You can load it [here](chrome://extensions).
+You can access this through the menu, or by typing `chrome://extensions` in the browser's URL bar.
+
+### Step 4: Ensure that developer mode is enabled
+
+Make sure the switch on the upper right labeled "developer mode" is turned on.
+
+### Step 5: Load the extension
+
+Click the "load unpacked" button on the upper right of the Chrome extensions menu. Browse to the folder you just extracted and select it.
+
+The extension should now be installed.
